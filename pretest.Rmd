@@ -1,0 +1,67 @@
+---
+title: "Pretest"
+author: "BUS 41911"
+date: "Due 18 September 2018"
+output:
+  pdf_document:
+    includes:
+      in_header: ../support/boothmacros.tex
+    number_sections: no
+    template: ../support/dm-docs.tex
+    toc: no
+  html_document:
+    theme: flatly
+---
+
+1. Please list the graduate level statistics/machine learning/data mining/computer science/econometrics courses you have taken. Include the names of the course with the course number if possible.
+
+2. (Maximum likelihood) Let $X_1,\ldots,X_n$ be iid Gaussian
+  random variables each with probability density function
+  \[
+  f_X(x;s) = \frac{1}{\sqrt{2\pi s}}\exp\left\{-\frac{x^2}{2s}\right\}.
+  \]
+  Find the maximum likelihood estimator for $s$. 
+
+3. Let $\hat\theta$ be an estimator for $\theta$. Write the formula
+  for the bias of $\hat\theta$. Is the MLE in the previous problem
+  unbiased? Is it asymptotically unbiased?
+
+4. (Risk analysis) Explain why we might prefer a biased estimator to an unbiased estimator.
+
+5. (Linear methods) Let 
+  \[
+  Y_i = X_i^\top \beta + \epsilon_i,\hspace{.5in} i=1,\ldots,n.,
+  \]
+  where the matrix $\mathbf{X}=[X_1^\top,\ldots,X_n^\top]^\top$ has full rank. Find
+  the ordinary least squares estimator of $\beta$. 
+  
+6. (Coding) What does the following `R` code do?
+```{r, eval=FALSE}
+x = 2*pi*runif(100)
+y = sin(x) + rnorm(100)
+B = splines::bs(x,20)
+logSeq <- function(from=1e6, to=1, len=100){ 
+  exp(seq(log(from),log(to),length.out = len))
+}
+lam = logSeq()
+mod = MASS::lm.ridge(y~B, lambda=lam)
+preds = cbind(1,B) %*% coef(mod)[which.min(mod$GCV),]
+df = data.frame(y=y, x=x, truth=sin(x), preds=preds)
+library(tidyverse)
+df %>% gather(key="key",value="value",-x) %>%
+  ggplot(aes(x=x,y=value,col=key)) + geom_line() + ylab('') +
+  theme_minimal()
+```
+
+7. (Convex optimization) Write down the Langrage Dual for the following optimization
+  problem and explain the necessary conditions for the stationary
+  point to be an optimum (you do not need to find the stationary
+  point or perform any calculations):
+  \begin{align*}
+    & \min_b L(y,\mathbb{X} b)\\
+    \textrm{subject to} &\quad \norm{Ab}^2 \leq C
+  \end{align*}
+  for some convex function $L: \R^n \rightarrow \R^+$, vectors $y \in \R^n$ and
+  $b \in \R^p$, matrices $A \in \R^{m\times p}$ and $\mathbf{X} \in
+  \R^{n\times p}$, and constant $C$. Here $\norm{\cdot}^2$ is the squared
+  $\ell_2$-norm of a vector. That is $\norm{z}^2 = z^\top z$.
