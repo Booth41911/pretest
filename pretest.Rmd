@@ -1,7 +1,7 @@
 ---
 title: "Pretest"
 author: "BUS 41911"
-date: "Due 18 September 2018"
+date: "Due 24 September 2018"
 output:
   pdf_document:
     includes:
@@ -13,12 +13,12 @@ output:
     theme: flatly
 ---
 
-* Please complete this test by September 18. I will use the results to better calibrate the course to student background.
+* Please complete this test by September 24 at 9am. I will use the results to better calibrate the course to student background. Email your answers to <daniel.mcdonald@chicagobooth.edu>.
 * Please don't spend more than 1 hour.
 * Please don't consult outside resources. The goal is to see what you know, not what you can find answers to. (Looking up the definition of a term you've heard before is fine, but try to stick to the spirit of the test. Use your best judgment.)
 * This is graded but on completion only (full points if submitted, none if not).
 
-1. Please list the graduate level statistics/machine learning/data mining/computer science/econometrics courses you have taken. Include the names of the course with the course number if possible.
+1. What is your degree program and what are you hoping to learn from this class?
 
 2. (Maximum likelihood) Let $X_1,\ldots,X_n$ be iid Gaussian
   random variables each with probability density function
